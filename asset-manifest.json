@@ -1,0 +1,15 @@
+{
+  "main.css": "/my-flickr/static/css/main.f666ac48.chunk.css",
+  "main.js": "/my-flickr/static/js/main.4e53d075.chunk.js",
+  "main.js.map": "/my-flickr/static/js/main.4e53d075.chunk.js.map",
+  "static/css/1.c86936c6.chunk.css": "/my-flickr/static/css/1.c86936c6.chunk.css",
+  "static/js/1.9c0da30f.chunk.js": "/my-flickr/static/js/1.9c0da30f.chunk.js",
+  "static/js/1.9c0da30f.chunk.js.map": "/my-flickr/static/js/1.9c0da30f.chunk.js.map",
+  "runtime~main.js": "/my-flickr/static/js/runtime~main.67f13d5c.js",
+  "runtime~main.js.map": "/my-flickr/static/js/runtime~main.67f13d5c.js.map",
+  "static/css/1.c86936c6.chunk.css.map": "/my-flickr/static/css/1.c86936c6.chunk.css.map",
+  "static/css/main.f666ac48.chunk.css.map": "/my-flickr/static/css/main.f666ac48.chunk.css.map",
+  "index.html": "/my-flickr/index.html",
+  "precache-manifest.497212a90055ada8220e9b6c89d53fad.js": "/my-flickr/precache-manifest.497212a90055ada8220e9b6c89d53fad.js",
+  "service-worker.js": "/my-flickr/service-worker.js"
+}

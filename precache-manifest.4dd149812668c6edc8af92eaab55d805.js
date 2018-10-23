@@ -4,23 +4,23 @@ self.__precacheManifest = [
     "url": "/my-flickr/static/js/runtime~main.67f13d5c.js"
   },
   {
-    "revision": "9903d5290035ffca62d0",
-    "url": "/my-flickr/static/js/main.9903d529.chunk.js"
+    "revision": "f28b3408d9cb611d697e",
+    "url": "/my-flickr/static/js/main.f28b3408.chunk.js"
   },
   {
-    "revision": "a036bd6d28f87f2ccf13",
-    "url": "/my-flickr/static/js/1.a036bd6d.chunk.js"
+    "revision": "f5844be56da7bdb72da7",
+    "url": "/my-flickr/static/js/1.f5844be5.chunk.js"
   },
   {
-    "revision": "9903d5290035ffca62d0",
+    "revision": "f28b3408d9cb611d697e",
     "url": "/my-flickr/static/css/main.a13f87e1.chunk.css"
   },
   {
-    "revision": "a036bd6d28f87f2ccf13",
+    "revision": "f5844be56da7bdb72da7",
     "url": "/my-flickr/static/css/1.75b0c82a.chunk.css"
   },
   {
-    "revision": "de4455b6e053f94abe44c36bf0201b09",
+    "revision": "a7c8dbdd26eb9779c8ea1e2ab262a912",
     "url": "/my-flickr/index.html"
   }
 ];

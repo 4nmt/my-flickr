@@ -1,77 +1,72 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { redirectTags } from "../actions";
+import { Link, withRouter } from "react-router-dom";
+
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
   InputGroup,
   InputGroupAddon,
   Input,
-  Button
+  Button,
+  NavLink,
+  Row,
+  Col
 } from "reactstrap";
 
-import { withRouter } from "react-router-dom";
+const Topbar = ({ dispatch }) => {
+  let input = "";
+  const divStype = {
+    color: "white",
+    margin: "10px",
+    opacity: ".7"
+  };
+  alert(window.location);
+  return (
+    <Navbar color="dark" dark expand="md">
+      <NavbarBrand href="/my-flickr">
+        {" "}
+        <span style={{ color: "white", fontWeight: "bold" }}>Flickr</span>
+      </NavbarBrand>
+      <Nav navbar>
+        <NavItem>
+          <Link to="/my-flickr">
+            <span style={divStype}>You</span>
+          </Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/my-flickr">
+            <span style={divStype}>Explore</span>
+          </Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/my-flickr">
+            <span style={divStype}>Create</span>
+          </Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/my-flickr">
+            <span style={divStype}>Go</span>
+          </Link>
+        </NavItem>
+      </Nav>
+      <Nav className="ml-auto" navbar>
+        <NavItem>
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">
+              <Button onClick={() => dispatch(redirectTags(input.value))}>
+                Search
+              </Button>
+            </InputGroupAddon>
+            <Input innerRef={node => (input = node)} placeholder="tags" />
+          </InputGroup>
+        </NavItem>
+      </Nav>
+    </Navbar>
+  );
+};
 
-class Topbar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false,
-      text: ""
-    };
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-
-  handleChange(e) {
-    this.setState({ text: e.target.value });
-  }
-
-  render() {
-    return (
-      <div>
-        <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">
-            <img
-              src="https://cdn2.techadvisor.co.uk/cmsdata/features/3637023/flickr-thumb_thumb800.png"
-              style={{ width: "10%", margin: "0" }}
-              alt="logo"
-            />
-          </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <InputGroup>
-                  <InputGroupAddon addonType="prepend">
-                    <Button
-                      onClick={() =>
-                        this.props.history.push(`/tags/${this.state.text}`)
-                      }
-                    >
-                      Search
-                    </Button>
-                  </InputGroupAddon>
-                  <Input
-                    onChange={e => this.handleChange(e)}
-                    value={this.state.text}
-                    placeholder="tags"
-                  />
-                </InputGroup>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </div>
-    );
-  }
-}
-
-export default withRouter(Topbar);
+export default withRouter(connect()(Topbar));

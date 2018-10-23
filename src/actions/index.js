@@ -18,20 +18,22 @@ export const showExplore = (page, data) => ({
   data: data
 });
 
-export const searchTags = tag => ({
+export const searchTags = (tag, data) => ({
   type: SEARCH_TAGS,
-  tag
+  tag,
+  data
 });
 
-export const showTags = (page, data) => ({
+export const showTags = (page, tag, data) => ({
   type: SHOW_TAGS,
   page,
-  data: data
+  tag,
+  data
 });
 
 export const redirectTags = tagName => {
   return dispatch => {
-    dispatch(searchTags(tagName));
+    dispatch(resetTags(tagName));
     history.push(`/my-flickr/tags/${tagName}`);
   };
 };
@@ -39,12 +41,24 @@ export const redirectTags = tagName => {
 export const fetchExplore = page => {
   return async dispatch => {
     try {
+      // const res = await axios.get(`https://api.flickr.com/services/rest/`, {
+      //   params: {
+      //     api_key: api_key,
+      //     method: "flickr.interestingness.getList",
+      //     format: "json",
+      //     nojsoncallback: 1,
+      //     page: page,
+      //     per_page: 20,
+      //     extras: "url_l,owner_name,views,tags"
+      //   }
+      // });
       const res = await axios.get(`https://api.flickr.com/services/rest/`, {
         params: {
           api_key: api_key,
-          method: "flickr.interestingness.getList",
+          method: "flickr.photos.search",
           format: "json",
           nojsoncallback: 1,
+          tags: "random",
           page: page,
           per_page: 20,
           extras: "url_l,owner_name,views,tags"
@@ -74,7 +88,30 @@ export const fetchTags = (page, tagName) => {
         }
       });
 
-      dispatch(showTags(page, res.data.photos.photo));
+      dispatch(showTags(page, tagName, res.data.photos.photo));
+    } catch (err) {
+      console.log("error");
+    }
+  };
+};
+
+export const resetTags = tagName => {
+  return async dispatch => {
+    try {
+      const res = await axios.get(`https://api.flickr.com/services/rest/`, {
+        params: {
+          api_key: api_key,
+          method: "flickr.photos.search",
+          format: "json",
+          nojsoncallback: 1,
+          tags: tagName,
+          page: 1,
+          per_page: 20,
+          extras: "url_l,owner_name,views,tags"
+        }
+      });
+
+      dispatch(searchTags(tagName, res.data.photos.photo));
     } catch (err) {
       console.log("error");
     }
@@ -100,3 +137,15 @@ export const fetchPhoto = id => {
     }
   };
 };
+
+function shouldFetchPosts(state, newTag) {
+  return state.currentTag === newTag;
+}
+
+export function fetchTagsIfNeeded(page, newTag) {
+  return (dispatch, getState) => {
+    if (shouldFetchPosts(getState().tags, newTag)) {
+      dispatch(fetchTags(page, newTag));
+    }
+  };
+}

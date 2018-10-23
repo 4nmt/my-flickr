@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { redirectTags } from "../actions";
 import { Link, withRouter } from "react-router-dom";
@@ -11,10 +11,7 @@ import {
   InputGroup,
   InputGroupAddon,
   Input,
-  Button,
-  NavLink,
-  Row,
-  Col
+  Button
 } from "reactstrap";
 
 const Topbar = ({ dispatch }) => {

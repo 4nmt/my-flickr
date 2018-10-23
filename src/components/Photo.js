@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Photo.css";
-import { Jumbotron, Button, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
 const Photo = ({ photo }) => {
   return (
@@ -18,7 +18,11 @@ const Photo = ({ photo }) => {
         <Col>
           <Row>
             <Col xs="4">
-              <img src={photo.avatarImageURL} style={{ width: "150px" }} />
+              <img
+                src={photo.avatarImageURL}
+                alt={photo.username}
+                style={{ width: "150px" }}
+              />
             </Col>
             <Col xs="8">
               <b>{photo.username}</b>

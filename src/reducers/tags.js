@@ -2,7 +2,8 @@ import { SEARCH_TAGS, SHOW_TAGS } from "../actions";
 
 const initState = {
   photoList: [],
-  currentPage: 1
+  currentPage: 1,
+  currentTag: ""
 };
 
 const tags = (state = initState, action) => {
@@ -11,10 +12,15 @@ const tags = (state = initState, action) => {
       return {
         ...state,
         photoList: [...state.photoList, ...action.data],
-        currentPage: action.page
+        currentPage: action.page,
+        currentTag: action.tag
       };
     case SEARCH_TAGS:
-      return { ...initState };
+      return {
+        photoList: [...action.data],
+        currentPage: 1,
+        currentTag: action.tag
+      };
     default:
       return state;
   }

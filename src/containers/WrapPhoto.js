@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Photo from "../components/Photo";
-import React, { Component } from "react";
+import React from "react";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const mapStateToProps = state => {
   const photo = state.photo;
   let tagList = photo.tags.tag.map(val => {
     return (
-      <Link to={`/my-flickr/tags/${val._content}`}>
+      <Link key={val} to={`/my-flickr/tags/${val._content}`}>
         <Button color="secondary" className="tagStyle">
           {val._content}
         </Button>{" "}

@@ -6,10 +6,16 @@ import store from "../store/configureStore";
 import { fetchPhoto } from "../actions";
 
 class Tag extends Component {
+  componentDidMount() {
+    if (this.props.currentTag !== this.props.match.params.tag) {
+      this.props.resetTags(this.props.match.params.tag);
+    }
+  }
+
   render() {
     return (
       <InfiniteScroll
-        pageStart={1}
+        pageStart={0}
         loadMore={() =>
           this.props.fetchTags(
             this.props.currentPage + 1,

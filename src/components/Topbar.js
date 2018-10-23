@@ -24,7 +24,6 @@ const Topbar = ({ dispatch }) => {
     margin: "10px",
     opacity: ".7"
   };
-  alert(window.location);
   return (
     <Navbar color="dark" dark expand="md">
       <NavbarBrand href="/my-flickr">

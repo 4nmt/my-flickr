@@ -16,7 +16,7 @@ const App = ({ store }) => (
     <Router history={history}>
       <Container>
         <Topbar />
-        <Route exact path="/my-flickr/" component={WrapExplore} />
+        <Route exact path="/my-flickr" component={WrapExplore} />
         <Route path="/my-flickr/tags/:tag" component={WrapTags} />
         <Route path="/my-flickr/photos/:photo_id" component={WrapPhoto} />
       </Container>
